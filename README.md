@@ -1,6 +1,6 @@
 # Number Plate Recognition System 🚗📄
 
-A deep learning-based system to detect and recognize license plates from images using PyTorch. Trained on custom datasets with XML annotations.
+License Plate Recognition System with real-time detection, database verification, and admin controls. Features live camera feed, image upload, and vehicle authorization checks. Uses PyTorch CNN-LSTM model for accurate plate detection. Secure login with user permissions and activity logging. Supports both live capture and image file processing for comprehensive vehicle monitoring and access control. Can be trained on custom datasets with XML annotations.
 
 # Features
 - **Object Detection**: Localize license plates in images using bounding boxes.
