@@ -13,5 +13,5 @@ class AuthManager:
             )
             result = cursor.fetchone()
             return result[0] if result else False
-            
-        return True  # Default allow for non-admin actions
+
+    return True
