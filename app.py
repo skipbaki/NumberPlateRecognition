@@ -11,7 +11,6 @@ import sys
 from sklearn.model_selection import train_test_split
 import warnings
 
-# Add project root to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # ---- Load Config ----
@@ -20,7 +19,6 @@ with open("utils/config.yaml", "r") as f:
 
 # ---- Collate Function ----
 def collate_fn(batch):
-    """Handle variable-length sequence labels"""
     images = []
     labels = []
     label_lengths = []
@@ -83,14 +81,13 @@ val_loader = DataLoader(
 )
 
 # ---- Class Balancing ----
-# Calculate character frequencies for loss weighting
+
 char_counts = torch.zeros(len(config['chars']))
 for idx in train_indices:
     plate_text = full_dataset.annotations[idx]['plate']
     for c in plate_text:
         char_counts[full_dataset.char_to_idx[c]] += 1
 
-# Add smoothing to prevent division by zero
 class_weights = 1.0 / (char_counts + 1e-6)  
 class_weights /= class_weights.sum()  # Normalize
 
