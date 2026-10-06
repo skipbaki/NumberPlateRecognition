@@ -3,7 +3,6 @@ class AuthManager:
         self.db = db
     
     def validate_permissions(self, username, required_level):
-        """Check user permissions against database"""
         cursor = self.db.conn.cursor()
         
         if required_level == "admin":
