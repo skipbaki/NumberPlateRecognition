@@ -32,16 +32,15 @@ class PlateRecognitionModel(nn.Module):
         # CNN feature extraction
         batch_size = x.size(0)
         x = self.cnn(x)  # Output shape: (batch_size, 256)
-        
-        # Reshape for LSTM: (batch, 256) -> (seq_len, batch, 256)
-        x = x.unsqueeze(0)        # Add sequence dimension
-        x = x.repeat(30, 1, 1)    # Create sequence length of 30
+
+        x = x.unsqueeze(0) 
+        x = x.repeat(30, 1, 1)  
         
         # LSTM processing
-        x, _ = self.lstm(x)       # Output shape: (30, batch_size, 256)
+        x, _ = self.lstm(x)       
         
         # Character classification
-        x = self.fc(x)            # Output shape: (30, batch_size, num_chars + 1)
+        x = self.fc(x)           
         return x
 
 # Test the model architecture
@@ -62,5 +61,5 @@ if __name__ == "__main__":
     
     # Verify output dimensions
     print(f"Input shape: {dummy_input.shape}")
-    print(f"Output shape: {output.shape}")  # Should be (30, 16, 37)
+    print(f"Output shape: {output.shape}")
     print("Model test passed!")
